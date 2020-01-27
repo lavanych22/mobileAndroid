@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getIntent().hasExtra("carId")) {
-            replaceFragment(new CarsFragment());
-        } else {
+   	     if (getIntent().hasExtra("carId")) {
+        	    replaceFragment(new CarsFragment());
+        	} else {
             initView();
             initListeners();
 
@@ -129,19 +129,19 @@ public class MainActivity extends AppCompatActivity
         mNavigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void logFirebaseToken() {
-        final String TAG = "FCM Token";
+    	private void logFirebaseToken() {
+        	final String TAG = "FCM Token";
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(task -> {
-                    if (!task.isSuccessful()) {
-                        Log.w(TAG, "getInstanceId failed", task.getException());
-                        return;
-                    }
+	        FirebaseInstanceId.getInstance().getInstanceId()
+        	        .addOnCompleteListener(task -> {
+                	    if (!task.isSuccessful()) {
+                        	Log.w(TAG, "getInstanceId failed", task.getException());
+                   	    	 return;
+                   	 }
 
-                    String token = Objects.requireNonNull(task.getResult()).getToken();
-
-                    Log.d(TAG, token);
-                });
-    }
+	                    String token = Objects.requireNonNull(task.getResult()).getToken();
+	
+        	            Log.d(TAG, token);
+                	});
+    	}
 }
